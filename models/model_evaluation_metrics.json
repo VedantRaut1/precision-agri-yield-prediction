@@ -1,0 +1,163 @@
+{
+    "best_model_name": "Spark MLlib LinearRegression",
+    "mllib_metrics": {
+        "Spark MLlib GBTRegressor": {
+            "R2_Score": 0.9492,
+            "RMSE_kg_per_ha": 287.57,
+            "MAE_kg_per_ha": 225.22,
+            "RMSE_quintal_per_ha": 2.88
+        },
+        "Spark MLlib RandomForest": {
+            "R2_Score": 0.9394,
+            "RMSE_kg_per_ha": 314.09,
+            "MAE_kg_per_ha": 234.21,
+            "RMSE_quintal_per_ha": 3.14
+        },
+        "Spark MLlib LinearRegression": {
+            "R2_Score": 0.9797,
+            "RMSE_kg_per_ha": 181.81,
+            "MAE_kg_per_ha": 142.29,
+            "RMSE_quintal_per_ha": 1.82
+        }
+    },
+    "test_r2": 0.9536,
+    "test_rmse_kg_per_ha": 274.68,
+    "test_mae_kg_per_ha": 214.07,
+    "test_rmse_quintal_per_ha": 2.75,
+    "feature_importances": [
+        {
+            "feature": "ndvi_max",
+            "importance": 0.0086
+        },
+        {
+            "feature": "ndvi_mean",
+            "importance": 0.02
+        },
+        {
+            "feature": "ndvi_integral",
+            "importance": 0.0069
+        },
+        {
+            "feature": "evi_max",
+            "importance": 0.0264
+        },
+        {
+            "feature": "ndre_mean",
+            "importance": 0.2487
+        },
+        {
+            "feature": "ndwi_mean",
+            "importance": 0.0164
+        },
+        {
+            "feature": "total_precip_season",
+            "importance": 0.0348
+        },
+        {
+            "feature": "precip_critical_window",
+            "importance": 0.0067
+        },
+        {
+            "feature": "gdd_cumulative",
+            "importance": 0.0034
+        },
+        {
+            "feature": "heat_stress_days_total",
+            "importance": 0.0536
+        },
+        {
+            "feature": "avg_temp_season",
+            "importance": 0.0047
+        },
+        {
+            "feature": "solar_radiation_total",
+            "importance": 0.0021
+        },
+        {
+            "feature": "soil_organic_carbon_pct",
+            "importance": 0.3141
+        },
+        {
+            "feature": "crop_Cotton",
+            "importance": 0.0032
+        },
+        {
+            "feature": "crop_Maize",
+            "importance": 0.0507
+        },
+        {
+            "feature": "crop_Mustard",
+            "importance": 0.0198
+        },
+        {
+            "feature": "crop_Rice (Paddy)",
+            "importance": 0.0195
+        },
+        {
+            "feature": "crop_Soybean",
+            "importance": 0.0776
+        },
+        {
+            "feature": "crop_Wheat",
+            "importance": 0.0822
+        },
+        {
+            "feature": "season_Kharif",
+            "importance": 0.0
+        },
+        {
+            "feature": "season_Rabi",
+            "importance": 0.0005
+        }
+    ],
+    "feature_columns": [
+        "ndvi_max",
+        "ndvi_mean",
+        "ndvi_integral",
+        "evi_max",
+        "ndre_mean",
+        "ndwi_mean",
+        "total_precip_season",
+        "precip_critical_window",
+        "gdd_cumulative",
+        "heat_stress_days_total",
+        "avg_temp_season",
+        "solar_radiation_total",
+        "soil_organic_carbon_pct",
+        "crop_Cotton",
+        "crop_Maize",
+        "crop_Mustard",
+        "crop_Rice (Paddy)",
+        "crop_Soybean",
+        "crop_Wheat",
+        "season_Kharif",
+        "season_Rabi"
+    ],
+    "engineered_features": [
+        "ndvi_max",
+        "ndvi_mean",
+        "ndvi_integral",
+        "evi_max",
+        "ndre_mean",
+        "ndwi_mean",
+        "total_precip_season",
+        "precip_critical_window",
+        "gdd_cumulative",
+        "heat_stress_days_total",
+        "avg_temp_season",
+        "solar_radiation_total",
+        "soil_organic_carbon_pct"
+    ],
+    "crops": [
+        "Cotton",
+        "Maize",
+        "Mustard",
+        "Rice (Paddy)",
+        "Soybean",
+        "Wheat"
+    ],
+    "seasons": [
+        "Kharif",
+        "Rabi"
+    ]
+}

@@ -1,0 +1,241 @@
+district_id,district,state,zone,crop,season,year,yield_kg_per_ha,yield_quintal_per_ha,yield_tonnes_per_ha
+PB_LUD,Ludhiana,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2017,4456.3,44.56,4.456
+PB_SAN,Sangrur,Punjab,Trans-Gangetic Plains,Rice (Paddy),Kharif,2017,3697.0,36.97,3.697
+PB_PAT,Patiala,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2017,4684.4,46.84,4.684
+PB_BAT,Bathinda,Punjab,Trans-Gangetic Plains,Cotton,Kharif,2017,2460.9,24.61,2.461
+HR_KAR,Karnal,Haryana,Trans-Gangetic Plains,Rice (Paddy),Kharif,2017,3763.3,37.63,3.763
+HR_KUR,Kurukshetra,Haryana,Trans-Gangetic Plains,Wheat,Rabi,2017,4700.5,47.01,4.701
+HR_SIR,Sirsa,Haryana,Trans-Gangetic Plains,Mustard,Rabi,2017,1193.3,11.93,1.193
+UP_MEE,Meerut,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2017,4955.1,49.55,4.955
+UP_ALI,Aligarh,Uttar Pradesh,Upper Gangetic Plains,Mustard,Rabi,2017,1334.3,13.34,1.334
+UP_VAR,Varanasi,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2017,4614.8,46.15,4.615
+UP_BAR,Bareilly,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2017,4493.6,44.94,4.494
+UP_GOR,Gorakhpur,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2017,4211.6,42.12,4.212
+MP_IND,Indore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2017,1646.4,16.46,1.646
+MP_UJJ,Ujjain,Madhya Pradesh,Central Plateau,Soybean,Kharif,2017,1407.9,14.08,1.408
+MP_HOS,Narmadapuram,Madhya Pradesh,Central Plateau,Wheat,Rabi,2017,4569.6,45.7,4.57
+MP_SEH,Sehore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2017,2189.8,21.9,2.19
+MH_NAS,Nashik,Maharashtra,Western Plateau,Maize,Kharif,2017,4577.1,45.77,4.577
+MH_AUR,Chhatrapati Sambhajinagar,Maharashtra,Western Plateau,Cotton,Kharif,2017,2270.1,22.7,2.27
+MH_NAG,Nagpur,Maharashtra,Eastern Plateau,Cotton,Kharif,2017,1993.4,19.93,1.993
+MH_KOL,Kolhapur,Maharashtra,Western Ghats & Coastal,Rice (Paddy),Kharif,2017,4270.9,42.71,4.271
+GJ_RAJ,Rajkot,Gujarat,Gujarat Plains & Hills,Cotton,Kharif,2017,1832.0,18.32,1.832
+WB_BUR,Purba Bardhaman,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2017,3142.4,31.42,3.142
+WB_HOO,Hooghly,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2017,4451.8,44.52,4.452
+TS_WAR,Warangal,Telangana,Southern Plateau,Cotton,Kharif,2017,2320.4,23.2,2.32
+AP_GUN,Guntur,Andhra Pradesh,East Coast Plains,Rice (Paddy),Kharif,2017,3635.0,36.35,3.635
+KA_BEL,Belagavi,Karnataka,Southern Plateau,Maize,Kharif,2017,3339.8,33.4,3.34
+KA_MAN,Mandya,Karnataka,Southern Plateau,Rice (Paddy),Kharif,2017,3837.6,38.38,3.838
+RJ_GAN,Sri Ganganagar,Rajasthan,Western Dry Region,Wheat,Rabi,2017,4200.3,42.0,4.2
+RJ_KOT,Kota,Rajasthan,Central Plateau,Mustard,Rabi,2017,1177.9,11.78,1.178
+RJ_BHA,Bharatpur,Rajasthan,Eastern Plains,Mustard,Rabi,2017,1377.2,13.77,1.377
+PB_LUD,Ludhiana,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2018,4006.2,40.06,4.006
+PB_SAN,Sangrur,Punjab,Trans-Gangetic Plains,Rice (Paddy),Kharif,2018,3997.3,39.97,3.997
+PB_PAT,Patiala,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2018,4416.1,44.16,4.416
+PB_BAT,Bathinda,Punjab,Trans-Gangetic Plains,Cotton,Kharif,2018,1324.9,13.25,1.325
+HR_KAR,Karnal,Haryana,Trans-Gangetic Plains,Rice (Paddy),Kharif,2018,4785.9,47.86,4.786
+HR_KUR,Kurukshetra,Haryana,Trans-Gangetic Plains,Wheat,Rabi,2018,3936.9,39.37,3.937
+HR_SIR,Sirsa,Haryana,Trans-Gangetic Plains,Mustard,Rabi,2018,1330.9,13.31,1.331
+UP_MEE,Meerut,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2018,4426.9,44.27,4.427
+UP_ALI,Aligarh,Uttar Pradesh,Upper Gangetic Plains,Mustard,Rabi,2018,1359.4,13.59,1.359
+UP_VAR,Varanasi,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2018,3582.8,35.83,3.583
+UP_BAR,Bareilly,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2018,4241.0,42.41,4.241
+UP_GOR,Gorakhpur,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2018,4613.3,46.13,4.613
+MP_IND,Indore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2018,1410.3,14.1,1.41
+MP_UJJ,Ujjain,Madhya Pradesh,Central Plateau,Soybean,Kharif,2018,1524.6,15.25,1.525
+MP_HOS,Narmadapuram,Madhya Pradesh,Central Plateau,Wheat,Rabi,2018,4628.6,46.29,4.629
+MP_SEH,Sehore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2018,1772.9,17.73,1.773
+MH_NAS,Nashik,Maharashtra,Western Plateau,Maize,Kharif,2018,3396.1,33.96,3.396
+MH_AUR,Chhatrapati Sambhajinagar,Maharashtra,Western Plateau,Cotton,Kharif,2018,1608.6,16.09,1.609
+MH_NAG,Nagpur,Maharashtra,Eastern Plateau,Cotton,Kharif,2018,1554.2,15.54,1.554
+MH_KOL,Kolhapur,Maharashtra,Western Ghats & Coastal,Rice (Paddy),Kharif,2018,4740.9,47.41,4.741
+GJ_RAJ,Rajkot,Gujarat,Gujarat Plains & Hills,Cotton,Kharif,2018,1249.1,12.49,1.249
+WB_BUR,Purba Bardhaman,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2018,4630.0,46.3,4.63
+WB_HOO,Hooghly,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2018,4083.3,40.83,4.083
+TS_WAR,Warangal,Telangana,Southern Plateau,Cotton,Kharif,2018,1377.3,13.77,1.377
+AP_GUN,Guntur,Andhra Pradesh,East Coast Plains,Rice (Paddy),Kharif,2018,3505.9,35.06,3.506
+KA_BEL,Belagavi,Karnataka,Southern Plateau,Maize,Kharif,2018,4030.6,40.31,4.031
+KA_MAN,Mandya,Karnataka,Southern Plateau,Rice (Paddy),Kharif,2018,3877.7,38.78,3.878
+RJ_GAN,Sri Ganganagar,Rajasthan,Western Dry Region,Wheat,Rabi,2018,3665.6,36.66,3.666
+RJ_KOT,Kota,Rajasthan,Central Plateau,Mustard,Rabi,2018,1434.3,14.34,1.434
+RJ_BHA,Bharatpur,Rajasthan,Eastern Plains,Mustard,Rabi,2018,1104.6,11.05,1.105
+PB_LUD,Ludhiana,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2019,4447.1,44.47,4.447
+PB_SAN,Sangrur,Punjab,Trans-Gangetic Plains,Rice (Paddy),Kharif,2019,3733.3,37.33,3.733
+PB_PAT,Patiala,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2019,3958.2,39.58,3.958
+PB_BAT,Bathinda,Punjab,Trans-Gangetic Plains,Cotton,Kharif,2019,2796.0,27.96,2.796
+HR_KAR,Karnal,Haryana,Trans-Gangetic Plains,Rice (Paddy),Kharif,2019,4752.3,47.52,4.752
+HR_KUR,Kurukshetra,Haryana,Trans-Gangetic Plains,Wheat,Rabi,2019,4721.1,47.21,4.721
+HR_SIR,Sirsa,Haryana,Trans-Gangetic Plains,Mustard,Rabi,2019,1516.3,15.16,1.516
+UP_MEE,Meerut,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2019,3995.0,39.95,3.995
+UP_ALI,Aligarh,Uttar Pradesh,Upper Gangetic Plains,Mustard,Rabi,2019,1313.4,13.13,1.313
+UP_VAR,Varanasi,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2019,3747.3,37.47,3.747
+UP_BAR,Bareilly,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2019,4320.4,43.2,4.32
+UP_GOR,Gorakhpur,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2019,3760.4,37.6,3.76
+MP_IND,Indore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2019,2183.8,21.84,2.184
+MP_UJJ,Ujjain,Madhya Pradesh,Central Plateau,Soybean,Kharif,2019,2202.6,22.03,2.203
+MP_HOS,Narmadapuram,Madhya Pradesh,Central Plateau,Wheat,Rabi,2019,4518.4,45.18,4.518
+MP_SEH,Sehore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2019,1988.1,19.88,1.988
+MH_NAS,Nashik,Maharashtra,Western Plateau,Maize,Kharif,2019,4668.3,46.68,4.668
+MH_AUR,Chhatrapati Sambhajinagar,Maharashtra,Western Plateau,Cotton,Kharif,2019,2274.6,22.75,2.275
+MH_NAG,Nagpur,Maharashtra,Eastern Plateau,Cotton,Kharif,2019,1982.2,19.82,1.982
+MH_KOL,Kolhapur,Maharashtra,Western Ghats & Coastal,Rice (Paddy),Kharif,2019,4599.6,46.0,4.6
+GJ_RAJ,Rajkot,Gujarat,Gujarat Plains & Hills,Cotton,Kharif,2019,2503.4,25.03,2.503
+WB_BUR,Purba Bardhaman,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2019,4543.3,45.43,4.543
+WB_HOO,Hooghly,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2019,4085.5,40.85,4.085
+TS_WAR,Warangal,Telangana,Southern Plateau,Cotton,Kharif,2019,1961.0,19.61,1.961
+AP_GUN,Guntur,Andhra Pradesh,East Coast Plains,Rice (Paddy),Kharif,2019,3911.1,39.11,3.911
+KA_BEL,Belagavi,Karnataka,Southern Plateau,Maize,Kharif,2019,4274.6,42.75,4.275
+KA_MAN,Mandya,Karnataka,Southern Plateau,Rice (Paddy),Kharif,2019,4014.4,40.14,4.014
+RJ_GAN,Sri Ganganagar,Rajasthan,Western Dry Region,Wheat,Rabi,2019,4297.6,42.98,4.298
+RJ_KOT,Kota,Rajasthan,Central Plateau,Mustard,Rabi,2019,1232.0,12.32,1.232
+RJ_BHA,Bharatpur,Rajasthan,Eastern Plains,Mustard,Rabi,2019,1226.5,12.26,1.226
+PB_LUD,Ludhiana,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2020,4665.7,46.66,4.666
+PB_SAN,Sangrur,Punjab,Trans-Gangetic Plains,Rice (Paddy),Kharif,2020,3578.3,35.78,3.578
+PB_PAT,Patiala,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2020,4890.5,48.9,4.89
+PB_BAT,Bathinda,Punjab,Trans-Gangetic Plains,Cotton,Kharif,2020,2223.7,22.24,2.224
+HR_KAR,Karnal,Haryana,Trans-Gangetic Plains,Rice (Paddy),Kharif,2020,4068.7,40.69,4.069
+HR_KUR,Kurukshetra,Haryana,Trans-Gangetic Plains,Wheat,Rabi,2020,4882.3,48.82,4.882
+HR_SIR,Sirsa,Haryana,Trans-Gangetic Plains,Mustard,Rabi,2020,1289.0,12.89,1.289
+UP_MEE,Meerut,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2020,4671.1,46.71,4.671
+UP_ALI,Aligarh,Uttar Pradesh,Upper Gangetic Plains,Mustard,Rabi,2020,1387.5,13.87,1.387
+UP_VAR,Varanasi,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2020,4050.1,40.5,4.05
+UP_BAR,Bareilly,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2020,4102.6,41.03,4.103
+UP_GOR,Gorakhpur,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2020,4445.7,44.46,4.446
+MP_IND,Indore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2020,1623.6,16.24,1.624
+MP_UJJ,Ujjain,Madhya Pradesh,Central Plateau,Soybean,Kharif,2020,1675.3,16.75,1.675
+MP_HOS,Narmadapuram,Madhya Pradesh,Central Plateau,Wheat,Rabi,2020,4729.7,47.3,4.73
+MP_SEH,Sehore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2020,1715.0,17.15,1.715
+MH_NAS,Nashik,Maharashtra,Western Plateau,Maize,Kharif,2020,4220.6,42.21,4.221
+MH_AUR,Chhatrapati Sambhajinagar,Maharashtra,Western Plateau,Cotton,Kharif,2020,2549.1,25.49,2.549
+MH_NAG,Nagpur,Maharashtra,Eastern Plateau,Cotton,Kharif,2020,2353.4,23.53,2.353
+MH_KOL,Kolhapur,Maharashtra,Western Ghats & Coastal,Rice (Paddy),Kharif,2020,3848.5,38.49,3.849
+GJ_RAJ,Rajkot,Gujarat,Gujarat Plains & Hills,Cotton,Kharif,2020,2073.3,20.73,2.073
+WB_BUR,Purba Bardhaman,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2020,3876.1,38.76,3.876
+WB_HOO,Hooghly,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2020,3429.6,34.3,3.43
+TS_WAR,Warangal,Telangana,Southern Plateau,Cotton,Kharif,2020,1834.1,18.34,1.834
+AP_GUN,Guntur,Andhra Pradesh,East Coast Plains,Rice (Paddy),Kharif,2020,3929.1,39.29,3.929
+KA_BEL,Belagavi,Karnataka,Southern Plateau,Maize,Kharif,2020,4269.1,42.69,4.269
+KA_MAN,Mandya,Karnataka,Southern Plateau,Rice (Paddy),Kharif,2020,3817.2,38.17,3.817
+RJ_GAN,Sri Ganganagar,Rajasthan,Western Dry Region,Wheat,Rabi,2020,3722.7,37.23,3.723
+RJ_KOT,Kota,Rajasthan,Central Plateau,Mustard,Rabi,2020,1416.0,14.16,1.416
+RJ_BHA,Bharatpur,Rajasthan,Eastern Plains,Mustard,Rabi,2020,1144.3,11.44,1.144
+PB_LUD,Ludhiana,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2021,4615.0,46.15,4.615
+PB_SAN,Sangrur,Punjab,Trans-Gangetic Plains,Rice (Paddy),Kharif,2021,4358.3,43.58,4.358
+PB_PAT,Patiala,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2021,4369.3,43.69,4.369
+PB_BAT,Bathinda,Punjab,Trans-Gangetic Plains,Cotton,Kharif,2021,1995.4,19.95,1.995
+HR_KAR,Karnal,Haryana,Trans-Gangetic Plains,Rice (Paddy),Kharif,2021,4340.3,43.4,4.34
+HR_KUR,Kurukshetra,Haryana,Trans-Gangetic Plains,Wheat,Rabi,2021,4784.0,47.84,4.784
+HR_SIR,Sirsa,Haryana,Trans-Gangetic Plains,Mustard,Rabi,2021,1029.7,10.3,1.03
+UP_MEE,Meerut,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2021,4233.7,42.34,4.234
+UP_ALI,Aligarh,Uttar Pradesh,Upper Gangetic Plains,Mustard,Rabi,2021,1256.9,12.57,1.257
+UP_VAR,Varanasi,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2021,4064.1,40.64,4.064
+UP_BAR,Bareilly,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2021,4076.7,40.77,4.077
+UP_GOR,Gorakhpur,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2021,4330.0,43.3,4.33
+MP_IND,Indore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2021,1767.9,17.68,1.768
+MP_UJJ,Ujjain,Madhya Pradesh,Central Plateau,Soybean,Kharif,2021,1955.0,19.55,1.955
+MP_HOS,Narmadapuram,Madhya Pradesh,Central Plateau,Wheat,Rabi,2021,4355.0,43.55,4.355
+MP_SEH,Sehore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2021,1319.0,13.19,1.319
+MH_NAS,Nashik,Maharashtra,Western Plateau,Maize,Kharif,2021,4697.1,46.97,4.697
+MH_AUR,Chhatrapati Sambhajinagar,Maharashtra,Western Plateau,Cotton,Kharif,2021,2567.6,25.68,2.568
+MH_NAG,Nagpur,Maharashtra,Eastern Plateau,Cotton,Kharif,2021,1671.7,16.72,1.672
+MH_KOL,Kolhapur,Maharashtra,Western Ghats & Coastal,Rice (Paddy),Kharif,2021,3384.9,33.85,3.385
+GJ_RAJ,Rajkot,Gujarat,Gujarat Plains & Hills,Cotton,Kharif,2021,2083.9,20.84,2.084
+WB_BUR,Purba Bardhaman,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2021,3791.6,37.92,3.792
+WB_HOO,Hooghly,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2021,4217.4,42.17,4.217
+TS_WAR,Warangal,Telangana,Southern Plateau,Cotton,Kharif,2021,1434.0,14.34,1.434
+AP_GUN,Guntur,Andhra Pradesh,East Coast Plains,Rice (Paddy),Kharif,2021,4382.2,43.82,4.382
+KA_BEL,Belagavi,Karnataka,Southern Plateau,Maize,Kharif,2021,3495.0,34.95,3.495
+KA_MAN,Mandya,Karnataka,Southern Plateau,Rice (Paddy),Kharif,2021,3451.2,34.51,3.451
+RJ_GAN,Sri Ganganagar,Rajasthan,Western Dry Region,Wheat,Rabi,2021,4466.0,44.66,4.466
+RJ_KOT,Kota,Rajasthan,Central Plateau,Mustard,Rabi,2021,1162.5,11.63,1.163
+RJ_BHA,Bharatpur,Rajasthan,Eastern Plains,Mustard,Rabi,2021,1255.6,12.56,1.256
+PB_LUD,Ludhiana,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2022,3113.8,31.14,3.114
+PB_SAN,Sangrur,Punjab,Trans-Gangetic Plains,Rice (Paddy),Kharif,2022,4390.4,43.9,4.39
+PB_PAT,Patiala,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2022,3750.0,37.5,3.75
+PB_BAT,Bathinda,Punjab,Trans-Gangetic Plains,Cotton,Kharif,2022,2423.9,24.24,2.424
+HR_KAR,Karnal,Haryana,Trans-Gangetic Plains,Rice (Paddy),Kharif,2022,4081.1,40.81,4.081
+HR_KUR,Kurukshetra,Haryana,Trans-Gangetic Plains,Wheat,Rabi,2022,3379.3,33.79,3.379
+HR_SIR,Sirsa,Haryana,Trans-Gangetic Plains,Mustard,Rabi,2022,800.0,8.0,0.8
+UP_MEE,Meerut,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2022,2985.6,29.86,2.986
+UP_ALI,Aligarh,Uttar Pradesh,Upper Gangetic Plains,Mustard,Rabi,2022,800.0,8.0,0.8
+UP_VAR,Varanasi,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2022,3750.4,37.5,3.75
+UP_BAR,Bareilly,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2022,3219.3,32.19,3.219
+UP_GOR,Gorakhpur,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2022,4225.0,42.25,4.225
+MP_IND,Indore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2022,2270.0,22.7,2.27
+MP_UJJ,Ujjain,Madhya Pradesh,Central Plateau,Soybean,Kharif,2022,1837.7,18.38,1.838
+MP_HOS,Narmadapuram,Madhya Pradesh,Central Plateau,Wheat,Rabi,2022,3448.2,34.48,3.448
+MP_SEH,Sehore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2022,1818.9,18.19,1.819
+MH_NAS,Nashik,Maharashtra,Western Plateau,Maize,Kharif,2022,3502.5,35.03,3.503
+MH_AUR,Chhatrapati Sambhajinagar,Maharashtra,Western Plateau,Cotton,Kharif,2022,1916.3,19.16,1.916
+MH_NAG,Nagpur,Maharashtra,Eastern Plateau,Cotton,Kharif,2022,2501.9,25.02,2.502
+MH_KOL,Kolhapur,Maharashtra,Western Ghats & Coastal,Rice (Paddy),Kharif,2022,4284.9,42.85,4.285
+GJ_RAJ,Rajkot,Gujarat,Gujarat Plains & Hills,Cotton,Kharif,2022,1841.9,18.42,1.842
+WB_BUR,Purba Bardhaman,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2022,3944.0,39.44,3.944
+WB_HOO,Hooghly,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2022,4534.6,45.35,4.535
+TS_WAR,Warangal,Telangana,Southern Plateau,Cotton,Kharif,2022,2284.5,22.85,2.285
+AP_GUN,Guntur,Andhra Pradesh,East Coast Plains,Rice (Paddy),Kharif,2022,3645.5,36.45,3.645
+KA_BEL,Belagavi,Karnataka,Southern Plateau,Maize,Kharif,2022,4418.4,44.18,4.418
+KA_MAN,Mandya,Karnataka,Southern Plateau,Rice (Paddy),Kharif,2022,4178.5,41.79,4.179
+RJ_GAN,Sri Ganganagar,Rajasthan,Western Dry Region,Wheat,Rabi,2022,2970.7,29.71,2.971
+RJ_KOT,Kota,Rajasthan,Central Plateau,Mustard,Rabi,2022,800.0,8.0,0.8
+RJ_BHA,Bharatpur,Rajasthan,Eastern Plains,Mustard,Rabi,2022,800.0,8.0,0.8
+PB_LUD,Ludhiana,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2023,4079.8,40.8,4.08
+PB_SAN,Sangrur,Punjab,Trans-Gangetic Plains,Rice (Paddy),Kharif,2023,3562.5,35.63,3.563
+PB_PAT,Patiala,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2023,3329.5,33.29,3.329
+PB_BAT,Bathinda,Punjab,Trans-Gangetic Plains,Cotton,Kharif,2023,1660.7,16.61,1.661
+HR_KAR,Karnal,Haryana,Trans-Gangetic Plains,Rice (Paddy),Kharif,2023,3609.2,36.09,3.609
+HR_KUR,Kurukshetra,Haryana,Trans-Gangetic Plains,Wheat,Rabi,2023,3910.1,39.1,3.91
+HR_SIR,Sirsa,Haryana,Trans-Gangetic Plains,Mustard,Rabi,2023,915.5,9.15,0.915
+UP_MEE,Meerut,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2023,3993.2,39.93,3.993
+UP_ALI,Aligarh,Uttar Pradesh,Upper Gangetic Plains,Mustard,Rabi,2023,800.0,8.0,0.8
+UP_VAR,Varanasi,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2023,4285.1,42.85,4.285
+UP_BAR,Bareilly,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2023,3555.0,35.55,3.555
+UP_GOR,Gorakhpur,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2023,3724.7,37.25,3.725
+MP_IND,Indore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2023,1709.5,17.1,1.71
+MP_UJJ,Ujjain,Madhya Pradesh,Central Plateau,Soybean,Kharif,2023,1176.1,11.76,1.176
+MP_HOS,Narmadapuram,Madhya Pradesh,Central Plateau,Wheat,Rabi,2023,4098.6,40.99,4.099
+MP_SEH,Sehore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2023,1499.1,14.99,1.499
+MH_NAS,Nashik,Maharashtra,Western Plateau,Maize,Kharif,2023,4275.1,42.75,4.275
+MH_AUR,Chhatrapati Sambhajinagar,Maharashtra,Western Plateau,Cotton,Kharif,2023,1779.7,17.8,1.78
+MH_NAG,Nagpur,Maharashtra,Eastern Plateau,Cotton,Kharif,2023,1633.3,16.33,1.633
+MH_KOL,Kolhapur,Maharashtra,Western Ghats & Coastal,Rice (Paddy),Kharif,2023,3748.9,37.49,3.749
+GJ_RAJ,Rajkot,Gujarat,Gujarat Plains & Hills,Cotton,Kharif,2023,1467.2,14.67,1.467
+WB_BUR,Purba Bardhaman,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2023,3180.3,31.8,3.18
+WB_HOO,Hooghly,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2023,3785.7,37.86,3.786
+TS_WAR,Warangal,Telangana,Southern Plateau,Cotton,Kharif,2023,1924.0,19.24,1.924
+AP_GUN,Guntur,Andhra Pradesh,East Coast Plains,Rice (Paddy),Kharif,2023,3834.9,38.35,3.835
+KA_BEL,Belagavi,Karnataka,Southern Plateau,Maize,Kharif,2023,3456.3,34.56,3.456
+KA_MAN,Mandya,Karnataka,Southern Plateau,Rice (Paddy),Kharif,2023,3382.5,33.83,3.383
+RJ_GAN,Sri Ganganagar,Rajasthan,Western Dry Region,Wheat,Rabi,2023,3799.6,38.0,3.8
+RJ_KOT,Kota,Rajasthan,Central Plateau,Mustard,Rabi,2023,800.0,8.0,0.8
+RJ_BHA,Bharatpur,Rajasthan,Eastern Plains,Mustard,Rabi,2023,830.7,8.31,0.831
+PB_LUD,Ludhiana,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2024,4387.2,43.87,4.387
+PB_SAN,Sangrur,Punjab,Trans-Gangetic Plains,Rice (Paddy),Kharif,2024,3934.7,39.35,3.935
+PB_PAT,Patiala,Punjab,Trans-Gangetic Plains,Wheat,Rabi,2024,4610.0,46.1,4.61
+PB_BAT,Bathinda,Punjab,Trans-Gangetic Plains,Cotton,Kharif,2024,2183.3,21.83,2.183
+HR_KAR,Karnal,Haryana,Trans-Gangetic Plains,Rice (Paddy),Kharif,2024,4256.5,42.57,4.257
+HR_KUR,Kurukshetra,Haryana,Trans-Gangetic Plains,Wheat,Rabi,2024,4124.6,41.25,4.125
+HR_SIR,Sirsa,Haryana,Trans-Gangetic Plains,Mustard,Rabi,2024,1332.8,13.33,1.333
+UP_MEE,Meerut,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2024,4302.7,43.03,4.303
+UP_ALI,Aligarh,Uttar Pradesh,Upper Gangetic Plains,Mustard,Rabi,2024,1131.4,11.31,1.131
+UP_VAR,Varanasi,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2024,3977.5,39.77,3.977
+UP_BAR,Bareilly,Uttar Pradesh,Upper Gangetic Plains,Wheat,Rabi,2024,4286.4,42.86,4.286
+UP_GOR,Gorakhpur,Uttar Pradesh,Middle Gangetic Plains,Rice (Paddy),Kharif,2024,4147.7,41.48,4.148
+MP_IND,Indore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2024,1696.2,16.96,1.696
+MP_UJJ,Ujjain,Madhya Pradesh,Central Plateau,Soybean,Kharif,2024,1831.8,18.32,1.832
+MP_HOS,Narmadapuram,Madhya Pradesh,Central Plateau,Wheat,Rabi,2024,4180.4,41.8,4.18
+MP_SEH,Sehore,Madhya Pradesh,Central Plateau,Soybean,Kharif,2024,1652.9,16.53,1.653
+MH_NAS,Nashik,Maharashtra,Western Plateau,Maize,Kharif,2024,4571.1,45.71,4.571
+MH_AUR,Chhatrapati Sambhajinagar,Maharashtra,Western Plateau,Cotton,Kharif,2024,1831.7,18.32,1.832
+MH_NAG,Nagpur,Maharashtra,Eastern Plateau,Cotton,Kharif,2024,2352.0,23.52,2.352
+MH_KOL,Kolhapur,Maharashtra,Western Ghats & Coastal,Rice (Paddy),Kharif,2024,4278.5,42.79,4.279
+GJ_RAJ,Rajkot,Gujarat,Gujarat Plains & Hills,Cotton,Kharif,2024,2239.5,22.4,2.24
+WB_BUR,Purba Bardhaman,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2024,4454.2,44.54,4.454
+WB_HOO,Hooghly,West Bengal,Lower Gangetic Plains,Rice (Paddy),Kharif,2024,3551.4,35.51,3.551
+TS_WAR,Warangal,Telangana,Southern Plateau,Cotton,Kharif,2024,1745.3,17.45,1.745
+AP_GUN,Guntur,Andhra Pradesh,East Coast Plains,Rice (Paddy),Kharif,2024,4667.6,46.68,4.668
+KA_BEL,Belagavi,Karnataka,Southern Plateau,Maize,Kharif,2024,3892.2,38.92,3.892
+KA_MAN,Mandya,Karnataka,Southern Plateau,Rice (Paddy),Kharif,2024,4078.3,40.78,4.078
+RJ_GAN,Sri Ganganagar,Rajasthan,Western Dry Region,Wheat,Rabi,2024,4210.8,42.11,4.211
+RJ_KOT,Kota,Rajasthan,Central Plateau,Mustard,Rabi,2024,1245.9,12.46,1.246
+RJ_BHA,Bharatpur,Rajasthan,Eastern Plains,Mustard,Rabi,2024,955.7,9.56,0.956
