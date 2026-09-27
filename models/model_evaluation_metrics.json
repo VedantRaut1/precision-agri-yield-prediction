@@ -2,112 +2,112 @@
     "best_model_name": "Spark MLlib LinearRegression",
     "mllib_metrics": {
         "Spark MLlib GBTRegressor": {
-            "R2_Score": 0.9492,
-            "RMSE_kg_per_ha": 287.57,
-            "MAE_kg_per_ha": 225.22,
-            "RMSE_quintal_per_ha": 2.88
+            "R2_Score": 0.91,
+            "RMSE_kg_per_ha": 374.82,
+            "MAE_kg_per_ha": 278.49,
+            "RMSE_quintal_per_ha": 3.75
         },
         "Spark MLlib RandomForest": {
-            "R2_Score": 0.9394,
-            "RMSE_kg_per_ha": 314.09,
-            "MAE_kg_per_ha": 234.21,
-            "RMSE_quintal_per_ha": 3.14
+            "R2_Score": 0.9005,
+            "RMSE_kg_per_ha": 394.13,
+            "MAE_kg_per_ha": 251.16,
+            "RMSE_quintal_per_ha": 3.94
         },
         "Spark MLlib LinearRegression": {
-            "R2_Score": 0.9797,
-            "RMSE_kg_per_ha": 181.81,
-            "MAE_kg_per_ha": 142.29,
-            "RMSE_quintal_per_ha": 1.82
+            "R2_Score": 0.9852,
+            "RMSE_kg_per_ha": 151.76,
+            "MAE_kg_per_ha": 120.89,
+            "RMSE_quintal_per_ha": 1.52
         }
     },
-    "test_r2": 0.9536,
-    "test_rmse_kg_per_ha": 274.68,
-    "test_mae_kg_per_ha": 214.07,
-    "test_rmse_quintal_per_ha": 2.75,
+    "test_r2": 0.9227,
+    "test_rmse_kg_per_ha": 347.45,
+    "test_mae_kg_per_ha": 214.29,
+    "test_rmse_quintal_per_ha": 3.47,
     "feature_importances": [
         {
             "feature": "ndvi_max",
-            "importance": 0.0086
+            "importance": 0.0345
         },
         {
             "feature": "ndvi_mean",
-            "importance": 0.02
+            "importance": 0.0142
         },
         {
             "feature": "ndvi_integral",
-            "importance": 0.0069
+            "importance": 0.0315
         },
         {
             "feature": "evi_max",
-            "importance": 0.0264
+            "importance": 0.0697
         },
         {
             "feature": "ndre_mean",
-            "importance": 0.2487
+            "importance": 0.1474
         },
         {
             "feature": "ndwi_mean",
-            "importance": 0.0164
+            "importance": 0.0269
         },
         {
             "feature": "total_precip_season",
-            "importance": 0.0348
+            "importance": 0.0361
         },
         {
             "feature": "precip_critical_window",
-            "importance": 0.0067
+            "importance": 0.0028
         },
         {
             "feature": "gdd_cumulative",
-            "importance": 0.0034
+            "importance": 0.0044
         },
         {
             "feature": "heat_stress_days_total",
-            "importance": 0.0536
+            "importance": 0.0463
         },
         {
             "feature": "avg_temp_season",
-            "importance": 0.0047
+            "importance": 0.0059
         },
         {
             "feature": "solar_radiation_total",
-            "importance": 0.0021
+            "importance": 0.0027
         },
         {
             "feature": "soil_organic_carbon_pct",
-            "importance": 0.3141
+            "importance": 0.376
         },
         {
             "feature": "crop_Cotton",
-            "importance": 0.0032
+            "importance": 0.012
         },
         {
             "feature": "crop_Maize",
-            "importance": 0.0507
+            "importance": 0.0238
         },
         {
             "feature": "crop_Mustard",
-            "importance": 0.0198
+            "importance": 0.0231
         },
         {
             "feature": "crop_Rice (Paddy)",
-            "importance": 0.0195
+            "importance": 0.0061
         },
         {
             "feature": "crop_Soybean",
-            "importance": 0.0776
+            "importance": 0.0665
         },
         {
             "feature": "crop_Wheat",
-            "importance": 0.0822
+            "importance": 0.0689
         },
         {
             "feature": "season_Kharif",
-            "importance": 0.0
+            "importance": 0.0004
         },
         {
             "feature": "season_Rabi",
-            "importance": 0.0005
+            "importance": 0.001
         }
     ],
     "feature_columns": [
