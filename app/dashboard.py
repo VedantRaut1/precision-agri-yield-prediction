@@ -8,7 +8,6 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import folium
-from folium.plugins import MarkerCluster
 from streamlit_folium import st_folium
 import joblib
 
@@ -24,39 +23,79 @@ from src.config import (
     SKLEARN_MODEL_PATH
 )
 
-# Page Configuration
+# Page Configuration - Clean Corporate / Research Interface
 st.set_page_config(
-    page_title="AgriVision | Precision Agriculture Big Data Analytics",
-    page_icon="🌾",
+    page_title="AgriVision | Precision Agricultural Analytics",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom Styling
+# Professional CSS Styling
 st.markdown("""
 <style>
-    .main-header {
-        font-size: 2.2rem;
+    /* Global Typography & Palette */
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .header-title {
+        font-size: 1.85rem;
         font-weight: 700;
-        color: #1b5e20;
-        margin-bottom: 0.2rem;
+        color: #0f172a;
+        letter-spacing: -0.025em;
+        margin-bottom: 0.15rem;
     }
-    .sub-header {
-        font-size: 1.05rem;
-        color: #424242;
-        margin-bottom: 1.5rem;
+    .header-subtitle {
+        font-size: 0.95rem;
+        color: #475569;
+        margin-bottom: 1.25rem;
+        line-height: 1.4;
     }
-    .metric-card {
-        background-color: #f1f8e9;
-        border-left: 5px solid #4caf50;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 15px;
+    .kpi-container {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 12px 16px;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
     }
-    .big-stat {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #2e7d32;
+    .kpi-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #64748b;
+        margin-bottom: 4px;
+    }
+    .kpi-value {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+    .kpi-subtext {
+        font-size: 0.75rem;
+        color: #10b981;
+        font-weight: 500;
+    }
+    .section-badge {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 4px;
+        background: #f1f5f9;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+        margin-bottom: 6px;
+    }
+    .status-panel {
+        padding: 12px 16px;
+        border-radius: 6px;
+        font-size: 0.88rem;
+        line-height: 1.45;
+        border-left: 4px solid #0284c7;
+        background: #f0f9ff;
+        color: #0369a1;
+        margin: 10px 0;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -85,7 +124,6 @@ df_features, df_sat, df_weather, metrics, model_bundle = load_data()
 if model_bundle:
     model = model_bundle["model"]
     feature_cols = model_bundle["feature_columns"]
-    # Prepare dummy columns
     df_enc = pd.get_dummies(df_features, columns=["crop", "season"], drop_first=False)
     for col in feature_cols:
         if col not in df_enc.columns:
@@ -99,80 +137,115 @@ else:
     df_features["predicted_yield_q"] = df_features["yield_quintal_per_ha"]
     df_features["error_pct"] = 0.0
 
-# ----------------- SIDEBAR FILTERS -----------------
-st.sidebar.image("https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80", use_column_width=True)
-st.sidebar.title("🌾 SpatioTemporal Controls")
-st.sidebar.markdown("Filter agricultural satellite records across India:")
+# ----------------- SIDEBAR CONTROLS -----------------
+st.sidebar.markdown("### Model Configuration")
+st.sidebar.markdown("Filter spatiotemporal observations across Indian agro-climatic zones:")
 
 available_years = sorted(df_features["year"].unique())
-selected_year = st.sidebar.selectbox("📅 Crop Year", available_years, index=len(available_years) - 1)
+selected_year = st.sidebar.selectbox("Crop Year", available_years, index=len(available_years) - 1)
 
 available_seasons = ["All"] + sorted(df_features["season"].unique().tolist())
-selected_season = st.sidebar.selectbox("🌦️ Agricultural Season", available_seasons, index=0)
+selected_season = st.sidebar.selectbox("Agricultural Season", available_seasons, index=0)
 
 available_crops = ["All"] + sorted(df_features["crop"].unique().tolist())
-selected_crop = st.sidebar.selectbox("🌱 Crop Type", available_crops, index=0)
+selected_crop = st.sidebar.selectbox("Target Crop", available_crops, index=0)
 
-# Filter dataset
+st.sidebar.divider()
+st.sidebar.markdown("**System Specifications**")
+st.sidebar.caption("• Framework: Apache PySpark 4.2.0 (SQL / MLlib)")
+st.sidebar.caption("• Satellite Bands: Sentinel-2 MSI / Resourcesat AWiFS")
+st.sidebar.caption("• Meteorology: IMD Gridded Rainfall & ERA5 Reanalysis")
+st.sidebar.caption("• Reference Standards: ISRO FASAL / DES (MoA&FW)")
+
+# Apply Filters
 filtered_df = df_features[df_features["year"] == selected_year]
 if selected_season != "All":
     filtered_df = filtered_df[filtered_df["season"] == selected_season]
 if selected_crop != "All":
     filtered_df = filtered_df[filtered_df["crop"] == selected_crop]
 
-# ----------------- HEADER & KPIS -----------------
-st.markdown('<div class="main-header">🌾 AgriVision: SpatioTemporal Satellite Yield Analytics</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-header">Big Data Apache PySpark Pipeline for Precision Agriculture Yield Prediction across Indian Agro-Climatic Zones (ISRO FASAL & DES Benchmark)</div>', unsafe_allow_html=True)
+# ----------------- HEADER & EXECUTIVE KPIS -----------------
+st.markdown('<div class="header-title">AgriVision: SpatioTemporal Satellite Yield Analytics</div>', unsafe_allow_html=True)
+st.markdown('<div class="header-subtitle">Distributed Apache PySpark Pipeline for Precision Crop Yield Estimation across Indian Agro-Climatic Zones | Research & Policy Benchmark</div>', unsafe_allow_html=True)
 
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
-    st.metric("Districts Monitored", f"{len(df_features['district'].unique())} Districts", "10 Major States")
+    st.markdown("""
+    <div class="kpi-container">
+        <div class="kpi-label">Monitoring Network</div>
+        <div class="kpi-value">30 Districts</div>
+        <div class="kpi-subtext">Across 10 States</div>
+    </div>
+    """, unsafe_allow_html=True)
 with col2:
-    st.metric("Satellite Bands Ingested", "9,600 Records", "Sentinel-2 & IMD Grids")
+    st.markdown("""
+    <div class="kpi-container">
+        <div class="kpi-label">Satellite Ingestion</div>
+        <div class="kpi-value">9,600 Obs</div>
+        <div class="kpi-subtext">Sentinel-2 & IMD Grids</div>
+    </div>
+    """, unsafe_allow_html=True)
 with col3:
-    best_r2 = metrics.get("test_r2", 0.986)
-    st.metric("PySpark MLlib R²", f"{best_r2:.3f}", "Out-of-Time Test Set")
+    best_r2 = metrics.get("test_r2", 0.980)
+    st.markdown(f"""
+    <div class="kpi-container">
+        <div class="kpi-label">Model Fit (R²)</div>
+        <div class="kpi-value">{best_r2:.3f}</div>
+        <div class="kpi-subtext">Out-of-Time Test Set</div>
+    </div>
+    """, unsafe_allow_html=True)
 with col4:
-    best_mae = metrics.get("test_mae_kg_per_ha", 114.2)
-    st.metric("Model MAE", f"{best_mae:.1f} kg/ha", f"{best_mae / 100.0:.2f} Quintal/ha")
+    best_mae = metrics.get("test_mae_kg_per_ha", 142.3)
+    st.markdown(f"""
+    <div class="kpi-container">
+        <div class="kpi-label">Mean Absolute Error</div>
+        <div class="kpi-value">{best_mae:.1f} kg/ha</div>
+        <div class="kpi-subtext">{best_mae / 100.0:.2f} Quintal/ha</div>
+    </div>
+    """, unsafe_allow_html=True)
 with col5:
-    st.metric("Active Year Scope", f"{selected_year}", f"{len(filtered_df)} Observations")
+    st.markdown(f"""
+    <div class="kpi-container">
+        <div class="kpi-label">Active Filter Scope</div>
+        <div class="kpi-value">{len(filtered_df)} Units</div>
+        <div class="kpi-subtext">Harvest Year {selected_year}</div>
+    </div>
+    """, unsafe_allow_html=True)
 
-st.divider()
+st.write("")
 
 # ----------------- TABS -----------------
 tab1, tab2, tab3, tab4 = st.tabs([
-    "🗺️ Geospatial Intelligence Map",
-    "📈 Satellite Phenology & Vegetation Dynamics",
-    "⚡ Big Data PySpark Architecture & Benchmarks",
-    "🧪 What-If Precision Agri Simulator"
+    "Geospatial Intelligence Map",
+    "Phenology & Spectral Dynamics",
+    "Distributed PySpark Benchmarks",
+    "Scenario Simulation & Risk Assessment"
 ])
 
 # ----------------- TAB 1: GEOSPATIAL MAP -----------------
 with tab1:
-    st.subheader(f"📍 District-Level Crop Yield & Satellite Greenness Map ({selected_year})")
-    st.markdown("Interactive GIS map showing satellite NDVI vegetation health and predicted crop yields across Indian agricultural districts.")
+    st.markdown("#### District-Level Crop Yield and Satellite Greenness Distribution")
+    st.caption(f"Spatial visualization of predicted crop yields and peak canopy vegetation index (NDVI) across Indian administrative districts for Year {selected_year}.")
 
-    map_center = [22.5, 78.9]  # Geographic center of India
+    map_center = [22.8, 79.2]
     m = folium.Map(location=map_center, zoom_start=5, tiles="OpenStreetMap")
 
-    # High-resolution Satellite Imagery layer (free, no watermark or API key)
+    # High-resolution satellite basemap
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
         attr="Esri World Imagery",
-        name="🛰️ Satellite View (Esri)",
+        name="Satellite Imagery (Esri)",
         overlay=False,
         control=True
     ).add_to(m)
 
     folium.TileLayer(
         tiles="OpenStreetMap",
-        name="🗺️ Standard Map (OSM)",
+        name="Cartographic Map (OpenStreetMap)",
         overlay=False,
         control=True
     ).add_to(m)
 
-    # Add markers for each district
     for _, row in filtered_df.iterrows():
         lat = row["lat"]
         lon = row["lon"]
@@ -187,48 +260,49 @@ with tab1:
         heat_days = row["heat_stress_days_total"]
         soc = row["soil_organic_carbon_pct"]
 
-        # Color based on NDVI health
         if ndvi >= 0.82:
-            circle_color = "#1b5e20"  # Dark green
+            circle_color = "#15803d"  # Green
         elif ndvi >= 0.75:
-            circle_color = "#4caf50"  # Medium green
+            circle_color = "#22c55e"
         elif ndvi >= 0.65:
-            circle_color = "#fbc02d"  # Yellow
+            circle_color = "#eab308"  # Amber
         else:
-            circle_color = "#e53935"  # Red / stressed
+            circle_color = "#dc2626"  # Red
 
         popup_html = f"""
-        <div style="font-family: Arial; min-width: 220px;">
-            <h4 style="margin: 0; color: #1b5e20;"><b>{d_name}, {state}</b></h4>
-            <hr style="margin: 4px 0;">
-            <b>Crop:</b> {crop} ({season})<br>
-            <b>Actual Yield:</b> {actual_y:,.1f} kg/ha ({actual_y/100:.1f} q/ha)<br>
-            <b>Predicted Yield:</b> {pred_y:,.1f} kg/ha ({pred_y/100:.1f} q/ha)<br>
-            <b>Peak Satellite NDVI:</b> {ndvi:.3f}<br>
-            <b>Seasonal Rainfall:</b> {rain:.1f} mm<br>
-            <b>Terminal Heat Days:</b> {heat_days} days<br>
-            <b>Soil Organic Carbon:</b> {soc:.2f}%
+        <div style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto; min-width: 210px; font-size: 13px;">
+            <div style="font-weight: 700; color: #0f172a; margin-bottom: 2px;">{d_name}, {state}</div>
+            <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">Zone: {row['zone']}</div>
+            <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                <tr><td style="color: #64748b; padding: 2px 0;">Crop & Season:</td><td style="font-weight: 600; text-align: right;">{crop} ({season})</td></tr>
+                <tr><td style="color: #64748b; padding: 2px 0;">Actual Yield:</td><td style="font-weight: 600; text-align: right;">{actual_y:,.1f} kg/ha</td></tr>
+                <tr><td style="color: #64748b; padding: 2px 0;">Predicted Yield:</td><td style="font-weight: 600; text-align: right; color: #15803d;">{pred_y:,.1f} kg/ha</td></tr>
+                <tr><td style="color: #64748b; padding: 2px 0;">Peak NDVI:</td><td style="font-weight: 600; text-align: right;">{ndvi:.3f}</td></tr>
+                <tr><td style="color: #64748b; padding: 2px 0;">Seasonal Rain:</td><td style="font-weight: 600; text-align: right;">{rain:.1f} mm</td></tr>
+                <tr><td style="color: #64748b; padding: 2px 0;">Terminal Heat:</td><td style="font-weight: 600; text-align: right;">{heat_days} days</td></tr>
+                <tr><td style="color: #64748b; padding: 2px 0;">Soil Carbon:</td><td style="font-weight: 600; text-align: right;">{soc:.2f}%</td></tr>
+            </table>
         </div>
         """
         folium.CircleMarker(
             location=[lat, lon],
-            radius=9,
-            popup=folium.Popup(popup_html, max_width=300),
-            tooltip=f"{d_name} ({crop}): {pred_y:,.0f} kg/ha | NDVI: {ndvi:.2f}",
-            color="#2e7d32",
+            radius=8,
+            popup=folium.Popup(popup_html, max_width=320),
+            tooltip=f"{d_name} ({crop}): Predicted {pred_y:,.0f} kg/ha | Peak NDVI: {ndvi:.2f}",
+            color="#14532d",
             fill=True,
             fill_color=circle_color,
-            fill_opacity=0.85,
+            fill_opacity=0.90,
             weight=1.5
         ).add_to(m)
 
     folium.LayerControl().add_to(m)
     st_folium(m, width=1200, height=520)
 
-    # Summary table below map
+    # Data & Parity Columns
     col_t1, col_t2 = st.columns([3, 2])
     with col_t1:
-        st.write("📋 **District Observations & Yield Prediction Table**")
+        st.markdown("**District Yield Observation Table**")
         display_cols = [
             "district", "state", "crop", "season", "ndvi_max", "total_precip_season",
             "heat_stress_days_total", "yield_kg_per_ha", "predicted_yield_kg", "error_pct"
@@ -244,125 +318,126 @@ with tab1:
             height=280
         )
     with col_t2:
-        st.write("📊 **Actual vs. Predicted Yield Correlation**")
+        st.markdown("**Model Parity (Observed vs. Predicted)**")
         fig_scatter = px.scatter(
             filtered_df,
             x="yield_kg_per_ha",
             y="predicted_yield_kg",
             color="crop",
             hover_name="district",
-            labels={"yield_kg_per_ha": "Actual Yield (kg/ha)", "predicted_yield_kg": "Predicted Yield (kg/ha)"},
-            title="Model Parity Plot (Ideal: y = x)"
+            labels={"yield_kg_per_ha": "Observed Yield (kg/ha)", "predicted_yield_kg": "Predicted Yield (kg/ha)"},
+            template="plotly_white"
         )
-        # Add diagonal 1:1 line
         min_val = min(filtered_df["yield_kg_per_ha"].min(), filtered_df["predicted_yield_kg"].min())
         max_val = max(filtered_df["yield_kg_per_ha"].max(), filtered_df["predicted_yield_kg"].max())
         fig_scatter.add_trace(go.Scatter(
             x=[min_val, max_val], y=[min_val, max_val],
-            mode="lines", line=dict(dash="dash", color="gray"),
-            name="1:1 Perfect Prediction"
+            mode="lines", line=dict(dash="dash", color="#94a3b8", width=1.5),
+            name="1:1 Parity Line"
         ))
-        fig_scatter.update_layout(height=280, margin=dict(l=20, r=20, t=30, b=20))
+        fig_scatter.update_layout(height=280, margin=dict(l=10, r=10, t=10, b=10))
         st.plotly_chart(fig_scatter, use_container_width=True)
 
 # ----------------- TAB 2: PHENOLOGY & SATELLITE DYNAMICS -----------------
 with tab2:
-    st.subheader("📈 Multi-Spectral Phenology & Weather Dynamics Explorer")
-    st.markdown("Inspect weekly Sentinel-2 spectral indices alongside IMD agro-meteorology across the entire crop growing calendar.")
+    st.markdown("#### High-Frequency Phenological Evolution & Weather Dynamics")
+    st.caption("Temporal progression of Sentinel-2 surface reflectance indices coupled with IMD meteorological observations across the growing season.")
 
     col_s1, col_s2 = st.columns([1, 1])
     with col_s1:
-        sel_district = st.selectbox("Select District for Deep Dive", sorted(df_features["district"].unique()), index=0)
+        sel_district = st.selectbox("Select Target District", sorted(df_features["district"].unique()), index=0)
     with col_s2:
         dist_meta = df_features[df_features["district"] == sel_district].iloc[0]
-        st.info(f"**District:** {sel_district}, {dist_meta['state']} | **Agro Zone:** {dist_meta['zone']} | **Soil:** {dist_meta['soil_type']} (SOC: {dist_meta['soil_organic_carbon_pct']}%)")
+        st.markdown(f"""
+        <div class="status-panel">
+            <b>District Profile:</b> {sel_district}, {dist_meta['state']} &nbsp;|&nbsp; 
+            <b>Agro-Zone:</b> {dist_meta['zone']} &nbsp;|&nbsp; 
+            <b>Soil:</b> {dist_meta['soil_type']} (SOC: {dist_meta['soil_organic_carbon_pct']}%)
+        </div>
+        """, unsafe_allow_html=True)
 
-    # Filter satellite & weather timeseries for this district & year
     d_id = dist_meta["district_id"]
     sat_ts = df_sat[(df_sat["district_id"] == d_id) & (df_sat["year"] == selected_year)].sort_values("week_in_season")
     wea_ts = df_weather[(df_weather["district_id"] == d_id) & (df_weather["year"] == selected_year)].sort_values("week_in_season")
 
     col_p1, col_p2 = st.columns(2)
     with col_p1:
-        st.write("🌿 **Vegetation Indices Progression (NDVI, EVI, NDRE, NDWI)**")
+        st.markdown("**Spectral Vegetation Indices Progression**")
         fig_indices = go.Figure()
-        fig_indices.add_trace(go.Scatter(x=sat_ts["week_in_season"], y=sat_ts["ndvi"], mode="lines+markers", name="NDVI (Canopy Greenness)", line=dict(color="#2e7d32", width=3)))
-        fig_indices.add_trace(go.Scatter(x=sat_ts["week_in_season"], y=sat_ts["evi"], mode="lines+markers", name="EVI (Atmospheric Corrected)", line=dict(color="#1976d2", width=2)))
-        fig_indices.add_trace(go.Scatter(x=sat_ts["week_in_season"], y=sat_ts["ndre"], mode="lines+markers", name="NDRE (Chlorophyll)", line=dict(color="#f57c00", width=2)))
-        fig_indices.add_trace(go.Scatter(x=sat_ts["week_in_season"], y=sat_ts["ndwi"], mode="lines+markers", name="NDWI (Canopy Moisture)", line=dict(color="#0097a7", width=2, dash="dash")))
+        fig_indices.add_trace(go.Scatter(x=sat_ts["week_in_season"], y=sat_ts["ndvi"], mode="lines+markers", name="NDVI (Canopy Greenness)", line=dict(color="#16a34a", width=2.5)))
+        fig_indices.add_trace(go.Scatter(x=sat_ts["week_in_season"], y=sat_ts["evi"], mode="lines+markers", name="EVI (Atmospheric Corrected)", line=dict(color="#2563eb", width=2)))
+        fig_indices.add_trace(go.Scatter(x=sat_ts["week_in_season"], y=sat_ts["ndre"], mode="lines+markers", name="NDRE (Chlorophyll)", line=dict(color="#d97706", width=2)))
+        fig_indices.add_trace(go.Scatter(x=sat_ts["week_in_season"], y=sat_ts["ndwi"], mode="lines+markers", name="NDWI (Canopy Moisture)", line=dict(color="#0891b2", width=2, dash="dash")))
         fig_indices.update_layout(
+            template="plotly_white",
             xaxis_title="Week in Season (Sowing to Harvest)",
-            yaxis_title="Spectral Index Value",
+            yaxis_title="Index Value",
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
             height=340,
-            margin=dict(l=20, r=20, t=20, b=20)
+            margin=dict(l=10, r=10, t=10, b=10)
         )
         st.plotly_chart(fig_indices, use_container_width=True)
 
     with col_p2:
-        st.write("🌦️ **Meteorology & Moisture Stress (Rainfall & Temperature)**")
+        st.markdown("**Agro-Meteorology & Thermal Profile**")
         fig_weather = go.Figure()
-        fig_weather.add_trace(go.Bar(x=wea_ts["week_in_season"], y=wea_ts["precip_week_mm"], name="Rainfall (mm)", marker_color="#42a5f5", yaxis="y1"))
-        fig_weather.add_trace(go.Scatter(x=wea_ts["week_in_season"], y=wea_ts["temp_max_c"], mode="lines+markers", name="Max Temp (°C)", line=dict(color="#e53935", width=2), yaxis="y2"))
-        fig_weather.add_trace(go.Scatter(x=wea_ts["week_in_season"], y=wea_ts["soil_moisture_pct"], mode="lines", name="Soil Moisture (%)", line=dict(color="#6d4c41", dash="dot"), yaxis="y1"))
+        fig_weather.add_trace(go.Bar(x=wea_ts["week_in_season"], y=wea_ts["precip_week_mm"], name="Rainfall (mm)", marker_color="#60a5fa", yaxis="y1"))
+        fig_weather.add_trace(go.Scatter(x=wea_ts["week_in_season"], y=wea_ts["temp_max_c"], mode="lines+markers", name="Max Temperature (°C)", line=dict(color="#ef4444", width=2), yaxis="y2"))
+        fig_weather.add_trace(go.Scatter(x=wea_ts["week_in_season"], y=wea_ts["soil_moisture_pct"], mode="lines", name="Soil Moisture (%)", line=dict(color="#78716c", dash="dot"), yaxis="y1"))
         
         fig_weather.update_layout(
+            template="plotly_white",
             xaxis_title="Week in Season",
-            yaxis=dict(title="Precipitation (mm) / Moisture (%)"),
+            yaxis=dict(title="Precipitation (mm) / Soil Moisture (%)"),
             yaxis2=dict(title="Temperature (°C)", overlaying="y", side="right"),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
             height=340,
-            margin=dict(l=20, r=20, t=20, b=20)
+            margin=dict(l=10, r=10, t=10, b=10)
         )
         st.plotly_chart(fig_weather, use_container_width=True)
 
-    st.markdown("""
-    > [!TIP]
-    > **Agronomic Interpretation:** The bell-shaped curve in the greenness plot represents crop phenology. Peak NDVI coincides with the reproductive flowering/silking stage (weeks 8-11). If soil moisture dips or heat stress days spike during this window, canopy senescence accelerates, driving down final grain yield.
-    """)
-
 # ----------------- TAB 3: BIG DATA ARCHITECTURE & BENCHMARKS -----------------
 with tab3:
-    st.subheader("⚡ Big Data Distributed Pipeline & PySpark MLlib Benchmarks")
-    st.markdown("Detailed breakdown of the distributed big data pipeline, Spark SQL optimizations, and model performance metrics.")
+    st.markdown("#### Distributed Computing Pipeline & PySpark MLlib Evaluation")
+    st.caption("Architecture specification, distributed storage partitioning, and comparative regressor performance on unseen temporal holdouts.")
 
     col_b1, col_b2 = st.columns([1, 1])
     with col_b1:
-        st.write("🏗️ **Distributed System Architecture**")
+        st.markdown("**Distributed System Architecture & Data Flow**")
         st.code("""
-[Data Sources]
-  ├── Multi-Spectral Satellite Bands (Sentinel-2 / Resourcesat AWiFS)
-  ├── Gridded Weather Time Series (IMD / ERA5 / CHIRPS)
-  └── District Crop Production Targets (DES / PMFBY Ministry of Agriculture)
-               │
-               ▼
-[Distributed Storage Layer]
-  └── Apache Parquet (Partitioned by state and season for zero-copy I/O)
-               │
-               ▼
-[Distributed PySpark Engine]
-  ├── Spark SQL: Vectorized Column Expressions (NDVI, EVI, NDRE, NDWI)
-  ├── SpatioTemporal Window Functions: Phenology peak & seasonal integrals
-  └── Distributed Multi-Way Joins on [District_ID, Year, Season]
-               │
-               ▼
-[PySpark MLlib Machine Learning Pipeline]
-  ├── VectorAssembler + StandardScaler
-  ├── Distributed GBTRegressor & RandomForestRegressor
-  └── Out-of-Time Model Validation (Train: 2017-2022, Test: 2023-2024)
+[Ingestion Layer]
+  |-- Multi-Spectral Satellite Bands (Sentinel-2 MSI / AWiFS)
+  |-- Meteorological Time Series (IMD 0.25 deg / ERA5)
+  \\-- District Ground Truth Records (DES / PMFBY)
+               |
+               v
+[Distributed Storage Engine]
+  \\-- Columnar Apache Parquet (Partitioned by State & Season, Snappy)
+               |
+               v
+[PySpark Processing Engine]
+  |-- Spark SQL: Column Expressions for NDVI, EVI, NDRE, NDWI
+  |-- Temporal Window Aggregations: Peak Greenness, GDD Cumulative
+  \\-- Distributed SpatioTemporal Multi-Way Join on [District_ID, Year, Season]
+               |
+               v
+[PySpark MLlib Modeling Pipeline]
+  |-- VectorAssembler & StandardScaler
+  |-- Distributed GBTRegressor, RandomForest & Linear Regression
+  \\-- Out-of-Time Temporal Holdout Evaluation (Train: 2017-22, Test: 2023-24)
         """, language="text")
 
     with col_b2:
-        st.write("📊 **Comparative Model Evaluation on Out-of-Time Test Set**")
+        st.markdown("**Comparative Model Evaluation on Out-of-Time Test Set**")
         mllib_results = metrics.get("mllib_metrics", {
-            "Spark MLlib GBTRegressor": {"R2_Score": 0.9178, "RMSE_kg_per_ha": 347.94, "MAE_kg_per_ha": 256.85},
-            "Spark MLlib RandomForest": {"R2_Score": 0.9222, "RMSE_kg_per_ha": 338.67, "MAE_kg_per_ha": 224.13},
-            "Spark MLlib LinearRegression": {"R2_Score": 0.9866, "RMSE_kg_per_ha": 140.32, "MAE_kg_per_ha": 114.20}
+            "Spark MLlib GBTRegressor": {"R2_Score": 0.9492, "RMSE_kg_per_ha": 287.57, "MAE_kg_per_ha": 225.22},
+            "Spark MLlib RandomForest": {"R2_Score": 0.9394, "RMSE_kg_per_ha": 314.09, "MAE_kg_per_ha": 234.21},
+            "Spark MLlib LinearRegression": {"R2_Score": 0.9797, "RMSE_kg_per_ha": 181.81, "MAE_kg_per_ha": 142.29}
         })
         df_bench = pd.DataFrame(mllib_results).T
         st.dataframe(df_bench, use_container_width=True)
 
-        st.write("🎯 **Key SpatioTemporal Feature Importances**")
+        st.markdown("**SpatioTemporal Feature Dominance**")
         feat_imps = metrics.get("feature_importances", [
             {"feature": "ndvi_max", "importance": 0.38},
             {"feature": "total_precip_season", "importance": 0.22},
@@ -377,35 +452,34 @@ with tab3:
             x="importance",
             y="feature",
             orientation="h",
-            labels={"importance": "Relative Importance", "feature": "Engineered Spatiotemporal Feature"},
-            title="Feature Dominance in Crop Yield Prediction"
+            labels={"importance": "Relative Weight", "feature": "Engineered Feature"},
+            template="plotly_white"
         )
-        fig_imp.update_layout(height=260, margin=dict(l=20, r=20, t=30, b=20))
+        fig_imp.update_layout(height=260, margin=dict(l=10, r=10, t=10, b=10))
         st.plotly_chart(fig_imp, use_container_width=True)
 
 # ----------------- TAB 4: WHAT-IF SIMULATOR -----------------
 with tab4:
-    st.subheader("🧪 What-If Climate Anomaly & Precision Agri Simulator")
-    st.markdown("Simulate the impact of climate extremes (monsoon deficit, heatwaves, or organic carbon enrichment) on regional crop yield in real time.")
+    st.markdown("#### Scenario Simulation & Agro-Climatic Stress Testing")
+    st.caption("Quantify yield sensitivity to climate perturbations (monsoon deficits, heatwaves, or soil organic carbon enrichment) in real time.")
 
     col_sim_ctrl, col_sim_res = st.columns([1, 1])
 
     with col_sim_ctrl:
-        st.write("🎛️ **Scenario Parameters**")
+        st.markdown("**Simulation Parameters**")
         sim_district = st.selectbox("Select Target District", sorted(df_features["district"].unique()), key="sim_d")
         base_row = df_features[(df_features["district"] == sim_district) & (df_features["year"] == selected_year)].iloc[0]
 
-        st.caption(f"Baseline: {base_row['crop']} ({base_row['season']}) in {sim_district} | Actual Baseline Yield: **{base_row['yield_kg_per_ha']:,.1f} kg/ha**")
+        st.caption(f"Baseline: {base_row['crop']} ({base_row['season']}) in {sim_district} | Observed Yield: **{base_row['yield_kg_per_ha']:,.1f} kg/ha**")
 
-        rain_slider = st.slider("Monsoon / Seasonal Rainfall Anomaly (%)", -50, 50, 0, step=5, help="Simulate drought or excess flood rains")
-        heat_slider = st.slider("Terminal Heat Stress Days (+/- Days)", -5, 10, 0, step=1, help="Simulate March terminal heatwave for Wheat or summer scorching for Kharif")
-        ndvi_slider = st.slider("Canopy Greenness / NDVI Perturbation", -0.15, 0.15, 0.0, step=0.01, help="Simulate pest attack / canopy defoliation or optimal lush vegetative growth")
-        soc_slider = st.slider("Soil Organic Carbon (SOC) Enhancement (%)", 0.0, 0.5, 0.0, step=0.05, help="Simulate regenerative agriculture or biochar intervention")
+        rain_slider = st.slider("Seasonal Rainfall Anomaly (%)", -50, 50, 0, step=5, help="Simulate drought deficits or excess monsoon floods")
+        heat_slider = st.slider("Terminal Heat Stress Days (+/- Days)", -5, 10, 0, step=1, help="Simulate March heatwaves for Rabi Wheat or summer scorching for Kharif")
+        ndvi_slider = st.slider("Canopy Greenness / NDVI Perturbation", -0.15, 0.15, 0.0, step=0.01, help="Simulate defoliation, pest pressure, or optimal vigor")
+        soc_slider = st.slider("Soil Organic Carbon (SOC) Enhancement (%)", 0.0, 0.5, 0.0, step=0.05, help="Simulate soil health / organic amendment intervention")
 
     with col_sim_res:
-        st.write("📈 **Simulated Yield Projection**")
+        st.markdown("**Projected Yield Response**")
         if model_bundle:
-            # Create synthetic feature vector
             sim_input = base_row.copy()
             sim_input["total_precip_season"] = base_row["total_precip_season"] * (1.0 + rain_slider / 100.0)
             sim_input["precip_critical_window"] = base_row["precip_critical_window"] * (1.0 + rain_slider / 100.0)
@@ -427,41 +501,39 @@ with tab4:
             with c_res1:
                 st.metric("Simulated Yield", f"{sim_pred:,.1f} kg/ha", f"{delta_kg:+,.1f} kg/ha ({delta_pct:+.1f}%)")
             with c_res2:
-                st.metric("Simulated Quintals", f"{sim_pred/100:.2f} q/ha", f"{delta_kg/100:+.2f} q/ha")
+                st.metric("Simulated Production", f"{sim_pred/100:.2f} q/ha", f"{delta_kg/100:+.2f} q/ha")
 
-            # Gauge chart
             fig_gauge = go.Figure(go.Indicator(
                 mode="gauge+number+delta",
                 value=sim_pred,
                 delta={"reference": base_pred, "valueformat": ".1f"},
                 gauge={
                     "axis": {"range": [500, 6500]},
-                    "bar": {"color": "#2e7d32" if delta_kg >= 0 else "#c62828"},
+                    "bar": {"color": "#15803d" if delta_kg >= 0 else "#b91c1c"},
                     "steps": [
-                        {"range": [500, 2000], "color": "#ffebee"},
-                        {"range": [2000, 4000], "color": "#fffde7"},
-                        {"range": [4000, 6500], "color": "#e8f5e9"}
+                        {"range": [500, 2200], "color": "#fee2e2"},
+                        {"range": [2200, 4200], "color": "#fef9c3"},
+                        {"range": [4200, 6500], "color": "#dcfce7"}
                     ],
                     "threshold": {
-                        "line": {"color": "black", "width": 4},
-                        "thickness": 0.75,
+                        "line": {"color": "#0f172a", "width": 3},
+                        "thickness": 0.8,
                         "value": base_pred
                     }
                 },
                 title={"text": f"Projected {base_row['crop']} Yield (kg/ha)"}
             ))
-            fig_gauge.update_layout(height=280, margin=dict(l=20, r=20, t=30, b=20))
+            fig_gauge.update_layout(height=260, margin=dict(l=10, r=10, t=10, b=10))
             st.plotly_chart(fig_gauge, use_container_width=True)
 
-            # Agronomic advisory
             if delta_kg < -300:
-                st.error("⚠️ **Severe Risk Alert:** Climate stress scenario causes significant crop yield deficit. Recommended mitigation: Supplemental drip irrigation during grain filling & foliar potassium spray.")
+                st.error("Advisory Alert: Scenario projects acute yield loss. Recommended intervention: Supplementary irrigation during grain filling and foliar potassium spray.")
             elif delta_kg > 200:
-                st.success("✅ **Positive Climate Dividend:** Conditions support high photosynthetic accumulation and biomass conversion.")
+                st.success("Advisory Note: Scenario indicates favorable vegetative assimilation and elevated potential harvest index.")
             else:
-                st.info("ℹ️ **Stable Yield Regime:** Projected yield is within expected regional variance.")
+                st.info("Advisory Status: Projected yield fluctuates within normal regional variance bounds.")
         else:
-            st.warning("Model bundle not loaded. Run `python src/ml_pipeline.py` first.")
+            st.warning("Model artifacts not initialized.")
 
 st.divider()
-st.caption("AgriVision Precision Agriculture Analytics Platform | Big Data Course Project | Powered by Apache PySpark, Sentinel-2 Remote Sensing, and Streamlit.")
+st.caption("AgriVision SpatioTemporal Analytics Platform | Big Data Course Project | Apache PySpark, Sentinel-2 Remote Sensing, Streamlit.")
