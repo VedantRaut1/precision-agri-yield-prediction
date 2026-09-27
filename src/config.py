@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -42,12 +43,77 @@ ENGINEERED_FEATURES = [
 ]
 TARGET_VARIABLE = "yield_kg_per_ha"
 
+JAVA_SEARCH_ROOTS = (
+    Path(r"C:\Program Files\Java"),
+    Path(r"C:\Program Files\Eclipse Adoptium"),
+    Path(r"C:\Program Files\Microsoft"),
+    Path(r"C:\Program Files\Amazon Corretto"),
+    Path(r"C:\Program Files\Zulu"),
+    Path(r"C:\Program Files\Zing"),
+    Path(r"C:\Program Files (x86)\Java"),
+)
+
+# Spark 4.x is supported on Java 17/21; prefer those when several JDKs are installed.
+SUPPORTED_JAVA_MAJORS = (17, 21)
+
+
+def _java_executable(java_home: Path) -> Path:
+    return java_home / "bin" / ("java.exe" if os.name == "nt" else "java")
+
+
+def _java_major(java_home: Path) -> int:
+    match = re.search(r"(\d+)", java_home.name)
+    return int(match.group(1)) if match else 0
+
+
+def resolve_java_home() -> Path:
+    """
+    Returns a JAVA_HOME directory that actually contains a java binary.
+
+    A stale JAVA_HOME (uninstalled or upgraded JDK) makes spark-submit.cmd abort with the
+    opaque "The system cannot find the path specified." message before the JVM starts,
+    so a configured value is validated and falls back to a real installation.
+    """
+    configured = os.environ.get("JAVA_HOME", "")
+    if configured:
+        configured_path = Path(configured)
+        if _java_executable(configured_path).exists():
+            return configured_path
+        print(f"[WARN] JAVA_HOME={configured} has no java binary; searching for an installed JDK...")
+
+    installed = []
+    for root in JAVA_SEARCH_ROOTS:
+        if not root.is_dir():
+            continue
+        if _java_executable(root).exists():
+            installed.append(root)
+        installed.extend(
+            child for child in root.iterdir()
+            if child.is_dir() and _java_executable(child).exists()
+        )
+
+    if not installed:
+        raise RuntimeError(
+            "No usable JDK found. Set JAVA_HOME to an installed JDK 17 or 21 "
+            f"(looked in: {', '.join(str(r) for r in JAVA_SEARCH_ROOTS)})."
+        )
+
+    supported = [p for p in installed if _java_major(p) in SUPPORTED_JAVA_MAJORS] or installed
+    return max(supported, key=_java_major)
+
+
 def get_spark_session(app_name="PrecisionAgri-YieldPrediction"):
     """
     Initializes a PySpark session configured for Windows and Big Data analytics.
     """
     os.environ['PYSPARK_PYTHON'] = sys.executable
     os.environ['PYSPARK_DRIVER_PYTHON'] = sys.executable
+    os.environ['JAVA_HOME'] = str(resolve_java_home())
+
+    if not os.environ.get('SPARK_HOME'):
+        from pyspark.find_spark_home import _find_spark_home
+        os.environ['SPARK_HOME'] = _find_spark_home()
+    
     
     from pyspark.sql import SparkSession
     
